@@ -1,0 +1,137 @@
+{% extends "app/company/base1.html" %}
+{% load static %}
+
+{% block content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Company Profile</h1>
+
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-body">
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="row">
+
+                            <!-- Left Side -->
+                            <div class="col-md-4 text-center">
+
+                                {% if company.logo_pic %}
+                                <img src="{{ company.logo_pic.url }}"
+                                    class="img-fluid rounded-circle border shadow mb-3" width="250">
+                                {% else %}
+                                <img src="{% static 'company/img/default.png' %}"
+                                    class="img-fluid rounded-circle border shadow mb-3" width="250">
+                                {% endif %}
+
+                                <input type="file" class="form-control" name="logo_pic">
+
+                            </div>
+
+                            <!-- Right Side -->
+                            <div class="col-md-8">
+
+                                <div class="row mb-3">
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" name="firstname"
+                                                value="{{ company.firstname }}" readonly>
+                                            <label>First Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" name="lastname"
+                                                value="{{ company.lastname }}" readonly>
+                                            <label>Last Name</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="company"
+                                        value="{{ company.company }}">
+                                    <label>Company Name</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="email" value="{{ company.user_id.email }}"
+                                        readonly>
+                                    <label>Email Address</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="contact"
+                                        value="{{ company.contact }}">
+                                    <label>Contact Number</label>
+                                </div>
+
+                                <div class="row mb-3">
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" name="state"
+                                                value="{{ company.state }}">
+                                            <label>State</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" name="city"
+                                                value="{{ company.city }}">
+                                            <label>City</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="address"
+                                        value="{{ company.address }}">
+                                    <label>Address</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="company_web"
+                                        value="{{ company.company_web }}">
+                                    <label>Website</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" name="description"
+                                        style="height:120px">{{ company.description }}</textarea>
+                                    <label>Description</label>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        Update Profile
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</div>
+
+{% endblock %}
+
+<!-- Name:-Pramod kumar
+mob:-7678624677
+email=pramoddevaa7777@gmail.com -->

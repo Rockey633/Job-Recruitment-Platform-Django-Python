@@ -1,0 +1,116 @@
+{% extends "app/company/base1.html" %}
+{% load static %}
+
+{% block content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="mt-4">Job Post Form </h1>
+
+                <div class="card shadow-lg border-0 rounded-lg">
+                    {% if msg %}
+                    <h4 style="color: green;">{{msg}}</h4>
+                    {% endif %}
+                    <div class="card-body">
+
+                        <form method="POST" action="{% url 'jobpost' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="jobname">
+                                <label>Job Name</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="companyname">
+                                <label>Company Name</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="companyaddress">
+                                <label>Company Address</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="jobdescription" style="height:120px"></textarea>
+                                <label>Job Description</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="qualification">
+                                <label>Qualification</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="resposibilities">
+                                <label>Responsibilities</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="location">
+                                <label>Job Location</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="companywebsite">
+                                <label>Company Website</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="email" name="companyemail">
+                                <label>Company Email</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="companycontact">
+                                <label>Company Contact</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="salarypackeg">
+                                <label>Salary Package</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" name="expreience">
+                                <label>Experience (Years)</label>
+                            </div>
+                            <div class="form-floating mb-3">
+
+                                {% if company.companyimage %}
+                                <img src="{{ company.companyimage.url }}"
+                                    class="img-fluid rounded-circle border shadow mb-3" width="250">
+                                {% else %}
+                                <img src="{% static 'company/img/default.png' %}"
+                                    class="img-fluid rounded-circle border shadow mb-3" width="250">
+                                {% endif %}
+
+                                <input type="file" class="form-control" name="companyimage">
+
+                            </div>
+
+
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    Post Job
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+    </main>
+
+</div>
+
+{% endblock %}
+
+<!-- Name:-Pramod kumar
+mob:-7678624677
+email=pramoddevaa7777@gmail.com -->
